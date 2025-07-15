@@ -21,12 +21,16 @@ type Config struct {
 
 // @title           Subscription Service
 // @version         1.0
+// @termsOfService  http://swagger.io/terms/
 // @description     Service for managing user subscriptions
+
 // @host            localhost:8082
 // @BasePath        /
+
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Subscription
+
 func main() {
 	if err := godotenv.Load(); err != nil {
 		slog.Error("failed to load .env file: %s", err.Error())

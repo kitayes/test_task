@@ -2,10 +2,21 @@ package delivery
 
 import (
 	"github.com/gin-gonic/gin"
+	_ "github.com/swaggo/files"
 	"net/http"
 	"strconv"
+	_ "test_task/docs"
 	"test_task/internal/models"
 )
+
+// @Summary Create subscription
+// @Tags subscriptions
+// @Accept json
+// @Produce json
+// @Param input body models.Subscription true "subscription info"
+// @Success 200 {object} map[string]interface{}
+// @Failure 400 {object} map[string]string
+// @Router /subscriptions [post]
 
 func (h *Handler) createSubscription(c *gin.Context) {
 	var input models.Subscription

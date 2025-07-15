@@ -4,6 +4,8 @@ import (
 	"context"
 	"github.com/gin-gonic/gin"
 	_ "github.com/swaggo/files"
+	swaggerFiles "github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
 	"log"
 	"net/http"
 	_ "test_task/docs"
@@ -65,6 +67,8 @@ func (h *Handler) Stop() {
 
 func (h *Handler) Init() error {
 	router := gin.Default()
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	sub := router.Group("/subscriptions")
 	{

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  todo-app:
+    build: ./
+    command: ./wait-for-postgres.sh db ./test-task-app
+    ports:
+      - 8082:8000
+    depends_on:
+      - db
+    environment:
+      - REPO_PASSWORD=qwerty
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - REPO_PASSWORD=qwerty
+    ports:
+      - 5435:5432
